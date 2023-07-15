@@ -12,3 +12,10 @@ body {
     background-position: center center;
     background-size: cover;
 }
+
+.bgReg {
+    background-image: url(media/usuario.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+}

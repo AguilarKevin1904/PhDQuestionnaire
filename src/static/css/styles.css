@@ -8,13 +8,13 @@ body {
 }
 
 .bg {
-    background-image: url(media/tazaDeCafe.jpg);
+    background-image: url(../img/tazaDeCafe.jpg);
     background-position: center center;
     background-size: cover;
 }
 
 .bgReg {
-    background-image: url(media/usuario.png);
+    background-image: url(../img/usuario.png);
     background-position: center center;
     background-repeat: no-repeat;
     margin-right: 20px;

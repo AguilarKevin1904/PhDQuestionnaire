@@ -38,12 +38,12 @@ def login():
                 return redirect(url_for('home'))
             else:
                 flash("Invalid password...")
-                return render_template('auth/login.html')
+                return render_template('login.html')
         else:
             flash("User not found...")
-            return render_template('auth/login.html')
+            return render_template('login.html')
     else:   
-        return render_template('auth/login.html')
+        return render_template('login.html')
 
 @app.route('/logout')
 def logout():
@@ -53,6 +53,10 @@ def logout():
 @app.route('/home')
 def home():
     return render_template('home.html')
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 @app.route('/protected')
 @login_required

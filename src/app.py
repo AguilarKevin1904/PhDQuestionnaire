@@ -28,9 +28,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        #print(request.form['email'])
-        #print(request.form['password'])
-        user = User(0, request.form.get('username'), request.form.get('password'))
+        user = User(0, request.form.get('fullname'), None, request.form.get('password'))
         logged_user = ModelUser.login(db, user)
         if logged_user != None:
             if logged_user.password:
@@ -45,6 +43,16 @@ def login():
     else:   
         return render_template('login.html')
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        user = User(0, request.form.get('fullname'), request.form.get('email'), request.form.get('password'))
+        ModelUser.registerUser(db,user)
+        return render_template('login.html')
+    else:
+        return render_template('register.html')
+    
+
 @app.route('/logout')
 def logout():
     logout_user()
@@ -53,10 +61,6 @@ def logout():
 @app.route('/home')
 def home():
     return render_template('home.html')
-
-@app.route('/register')
-def register():
-    return render_template('register.html')
 
 @app.route('/protected')
 @login_required

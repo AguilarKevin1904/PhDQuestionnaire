@@ -33,23 +33,18 @@
                 {% endwith %}
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <div class="mb-4">
-                    <label for="username" class="form-label">Correo Electronico</label>
-                    <input type="text" class="form-control" name="username">
+                    <label for="fullname" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="fullname">
                 </div>
                 <div class="mb-4" form>
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" name="password">
-                </div>
-                <div class="mb-4 form-check">
-                    <input type="checkbox" name="connected" class="form-check-input">
-                    <label for="connected" class="form-check-label">Mantenerme conectado</label>
                 </div>
                 <div class="d-grid">
                     <button type="submit" class="btn btn-secondary">Iniciar Sesion</button>
                 </div>
                 <div class="my-3">
                     <span>No tienes cuenta?<a href="{{ url_for('register') }}">Registrate</a></span><br>
-                    <span><a href="#">Recuperar Password</a></span>
                 </div>
             </form>
         </div>

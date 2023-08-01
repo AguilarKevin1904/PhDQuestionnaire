@@ -67,6 +67,10 @@ def home():
 def protected():
     return "<h1> Esta es una vista protegida, solo para usuarios autenticados.</h1>"
 
+@app.route('/adminPanel')
+def adminPanel():
+    return render_template('adminPanel.html')
+
 def status_401(error):
     return redirect(url_for('login'))
 

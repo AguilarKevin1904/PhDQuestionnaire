@@ -1,0 +1,37 @@
+{% extends './base.html' %}
+
+{% block title %} Pagina de administracion {% endblock %}
+
+{% block body %}
+<nav class="navbar bg-dark" data-bs-theme="dark" style="margin-bottom: 150px;">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 fs-1">Bienvenido {{ current_user.fullname }}</span>
+  </div>
+</nav>
+<div class="container bg-light my-5 rounded shadow text-center bgContainer align-items-center">
+  <div class="row justify-content-start align-items-center">
+    <div class="col">
+      <h2>Preguntas actualmente publicadas</h2>
+      <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul>
+    </div>
+    <div class="col rounded">
+      <h2>Herramientas</h2>     
+      <div class="row">
+        <button type="button" class="w-100 btn btn-dark btn-lg my-2 "> Editar preguntas</button>
+      </div>
+      <div class="row">
+        <button type="button" class="w-100 btn btn-dark btn-lg my-2"> Eliminar preguntas</button>
+      </div>
+      <div class="row">
+        <button type="button" class="w-100 btn btn-dark btn-lg my-2"> Lista de estudiantes registrados</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

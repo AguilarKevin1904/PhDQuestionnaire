@@ -24,10 +24,14 @@
     <!-- herramientas -->
     <div class="col">
       <div class="row input-group" style="margin-right: 3rem;">
+        <!-- add new question -->
         <h4 class="d-flex align-items-start">Nueva pregunta</h4>
-        <input type="text" class="rounded form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <form action="/adminPanel" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <input type="text" class="rounded form-control" name="newQuestion">
+          <button type="submit" class="w-55 btn btn-dark btn-lg my-2 mx-0"> Añadir</button>
+        </form>
         <div class="row mx-1">
-          <button type="button" class="w-55 btn btn-dark btn-lg my-2 mx-0"> Añadir</button>
           <button type="button" class="w-80 btn btn-dark btn-lg mt-3"> Editar preguntas</button>
           <button type="button" class="w-80 btn btn-dark btn-lg my-2"> Registro de estudiantes</button>
         </div>

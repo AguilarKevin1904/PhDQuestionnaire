@@ -5,8 +5,11 @@ from flask_login import LoginManager, login_user, logout_user, login_required
 
 from config import config
 
+from models.entities.question import Question
+
 # Models:
 from models.ModelUser import ModelUser
+from models.Modelquestion import ModelQuestion
 
 #Entities
 from models.entities.User import User
@@ -33,7 +36,7 @@ def login():
         if logged_user != None:
             if logged_user.password:
                 login_user(logged_user)
-                return redirect(url_for('home'))
+                return redirect(url_for('adminPanel'))
             else:
                 flash("Invalid password...")
                 return render_template('login.html')
@@ -52,6 +55,17 @@ def register():
     else:
         return render_template('register.html')
     
+@app.route('/adminPanel', methods=['GET', 'POST'])
+@login_required
+def adminPanel():
+    if request.method == 'POST':
+        question = Question(0, request.form.get('newQuestion'))
+        ModelQuestion.addQuestion(db, question)
+        print('pregunta añadida exitosmente')
+        return render_template('adminPanel.html')
+    else:
+        return render_template('adminPanel.html')
+    
 
 @app.route('/logout')
 def logout():
@@ -66,10 +80,6 @@ def home():
 @login_required
 def protected():
     return "<h1> Esta es una vista protegida, solo para usuarios autenticados.</h1>"
-
-@app.route('/adminPanel')
-def adminPanel():
-    return render_template('adminPanel.html')
 
 def status_401(error):
     return redirect(url_for('login'))

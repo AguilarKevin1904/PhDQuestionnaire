@@ -61,11 +61,18 @@ def adminPanel():
     if request.method == 'POST':
         question = Question(0, request.form.get('newQuestion'))
         ModelQuestion.addQuestion(db, question)
-        print('pregunta añadida exitosmente')
-        return render_template('adminPanel.html')
+        data = ModelQuestion.showQuestion(db)
+        print(data)
+        return render_template('adminPanel.html', questionsPack = data)
     else:
         return render_template('adminPanel.html')
     
+@app.route('/studentsList', methods=['GET', 'POST'])
+@login_required
+def studentsList():
+    data = ModelUser.showUsers(db)
+    print(data)
+    return render_template('studentsList.html', userPack = data)    
 
 @app.route('/logout')
 def logout():

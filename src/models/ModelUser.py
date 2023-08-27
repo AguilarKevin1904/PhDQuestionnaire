@@ -41,3 +41,11 @@ class ModelUser():
             db.connection.commit()
         except Exception as ex:
             raise Exception(ex)
+        
+    @classmethod
+    def showUsers(self,db):
+        cursor = db.connection.cursor()
+        sql = cursor.execute('SELECT DISTINCT email,fullname FROM usuarios')
+        data = cursor.fetchall()
+        cursor.close()
+        return data

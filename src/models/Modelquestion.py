@@ -9,5 +9,15 @@ class ModelQuestion():
             values = (question.newQuestion,)
             cursor.execute(sql, values)
             db.connection.commit()
+            data = self.showQuestion(db)
+            return data
         except Exception as ex:
             raise Exception(ex)
+    
+    @classmethod
+    def showQuestion(self, db):
+            cursor = db.connection.cursor()
+            sql = cursor.execute('SELECT DISTINCT question FROM preguntas')
+            data = cursor.fetchall()
+            cursor.close()
+            return data

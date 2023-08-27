@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+
+{% block title %} Registro de estudiantes {% endblock %}
+
+{% block body %}
+<nav class="navbar bg-dark" data-bs-theme="dark" style="margin-bottom: 10rem;">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 fs-1">Bienvenido {{ current_user.fullname }}</span>
+  </div>
+</nav>
+<!-- lista de estudiantes -->
+<div class="container my-5 rounded shadow text-center bgContainer align-items-center">
+  <div class="row justify-content-start align-items-center">
+    <div class="col">
+      <h2 class="justify-content-start"> Lista de estudiantes inscritos </h2>
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th> Correo electronico </th>
+            <th> Nombre </th>
+          </tr>
+        </thead>
+        {% for user in userPack %}
+        <tbody>
+          <tr>
+            <td>{{ user.0 }}</td>
+            <td>{{ user.1 }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
